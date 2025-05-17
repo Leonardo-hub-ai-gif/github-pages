@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendar Sessão</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f2f2; padding: 40px;}
+        .container { max-width: 400px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px #ccc;}
+        label { display: block; margin-top: 15px;}
+        input, button { width: 100%; padding: 8px; margin-top: 5px; }
+        button { background: #25d366; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer;}
+        button:hover { background: #128c7e;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Agende sua sessão</h2>
+        <form id="agendamentoForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" required>
+
+            <label for="hora">Horário:</label>
+            <input type="time" id="hora" required>
+
+            <button type="submit">Agendar pelo WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('agendamentoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const data = document.getElementById('data').value;
+            const hora = document.getElementById('hora').value;
+            const mensagem = `Olá! Meu nome é ${nome} e gostaria de agendar uma sessão para o dia ${data} às ${hora}.`;
+            const url = `https://wa.me/554491048986?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+</html>
